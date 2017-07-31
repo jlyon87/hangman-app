@@ -1,0 +1,3 @@
+var HangmanView = (function HangmanView() {
+
+}());

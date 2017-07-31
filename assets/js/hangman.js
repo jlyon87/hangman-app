@@ -130,4 +130,4 @@ var hangmanApp = (function HangmanApp(wordService, helper) {
 		return guesses;
 	}
 
-})(wordsApi, hangmanHelper);
+}(wordsApi, hangmanHelper));

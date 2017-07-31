@@ -1,0 +1,3 @@
+var HangmanApp = (function HangmanApp() {
+
+}());

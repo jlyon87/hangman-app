@@ -1,0 +1,3 @@
+var HangmanStats = (function HangmanStats() {
+
+}());

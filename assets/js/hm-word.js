@@ -1,0 +1,3 @@
+var HangmanWord = (function HangmanWord() {
+
+}());
