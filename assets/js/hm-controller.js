@@ -1,3 +1,3 @@
-var HangmanController = (function HangmanController() {
+var HangmanController = (function HangmanController(App, View) {
 
-}());
+}(HangmanApp, HangmanView));
