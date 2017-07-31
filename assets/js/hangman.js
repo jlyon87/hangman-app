@@ -7,8 +7,8 @@ var hangmanApp = (function HangmanApp(wordService, helper) {
 	init();
 
 	return {
-		start : start,
-		reset : reset
+		start: start,
+		reset: reset
 	};
 
 	function init() {
@@ -45,12 +45,12 @@ var hangmanApp = (function HangmanApp(wordService, helper) {
 		wordModel.letters.push(letter);
 		stats.remaining--;
 
-		updateScrubbedWord();
+		helper.updateScrubbedWord(wordModel);
 		checkGameStatus();
 		refreshElements();
 	}
 
-	function updateScrubbedWord() {
+	function updateScrubbedWord(wordModel) {
 		var scrubbedArr = wordModel.scrubbedWord.split(" ");
 		var wordArr = wordModel.word.split("");
 		for(var i = 0; i < wordModel.word.length; i++) {
@@ -91,18 +91,20 @@ var hangmanApp = (function HangmanApp(wordService, helper) {
 	function checkGameStatus() {
 		if(helper.hasWon(wordModel.scrubbedWord)) {
 			win();
-		} else if(helper.hasRemainingGuesses(stats.remaining)) {
+		} else if(!helper.hasRemainingGuesses(stats.remaining)) {
 			lose();
 		}
 	}
 
 	function win() {
+		// Add Win Panel
 		alert("You win!");
 		reset();
 	}
 
 	function lose() {
-		alert("You lose!");
+		// Add Lose Panel
+		alert("You Lose!");
 		reset();
 	}
 
@@ -112,7 +114,7 @@ var hangmanApp = (function HangmanApp(wordService, helper) {
 	}
 
 	function initScrubbedWord() {
-		return wordModel.word.split("").reduce(function(acc, val, i) {
+		return wordModel.word.split("").reduce(function(acc) {
 				return acc.concat("_");
 		}, []).join(" ");
 	}

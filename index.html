@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Hangman | JLyon</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css" >
@@ -19,7 +20,7 @@
 
 				<div >
 					<ul class="nav navbar-nav">
-						<li class="active">
+						<li class="">
 							<a href="#" onclick="hangmanApp.start();">Start</a>
 						</li>
 						<li class="">
@@ -41,6 +42,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<section class="text-center">
+
 									<div >
 										<label for="win-out">Wins: </label>
 										<span class="output" id="win-out"></span>
@@ -70,16 +72,20 @@
 
 			<div class="col-md-4">
 				<section class="panel">
+
 					<div class="panel-heading text-center">
 						<h2>Play!</h2>
 					</div>
+
 					<div class="panel-body">
+
 						<div class="row">
 							<div class="col-md-12">
 
 									<img class="img-responsive img-circle" src="assets/images/noose.jpg" alt="noose">
 							</div>
 						</div>
+
 						<div class="row">
 							<div class="col-md-6">
 								<button class="btn btn-primary pull-right" type="button" name="Start" onclick="hangmanApp.start();">Start</button>
@@ -89,6 +95,7 @@
 									<button class="btn btn-warning pull-left" type="button" name="Reset" onclick="hangmanApp.reset();">Reset</button>
 							</div>
 						</div>
+
 					</div>
 				</section>
 			</div>

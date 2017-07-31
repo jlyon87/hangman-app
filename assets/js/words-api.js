@@ -2,7 +2,7 @@
 var wordsApi = (function WordsApi() {
 	const config = {
 		uri: "https://wordsapiv1.p.mashape.com/words/?random=true",
-		key: "",
+		key: "zpsiMlRUNLmshLpq8JMxpSt9BoUPp1tDj25jsnlKkH15pEsBnZ",
 	};
 
 	return {
@@ -22,14 +22,14 @@ var wordsApi = (function WordsApi() {
 		});
 	}
 
-	function requestWord(cb) {
+	function requestWord(callback) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", config.uri);
 		xhr.setRequestHeader("X-Mashape-Key", config.key);
 
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState === XMLHttpRequest.DONE) {
-				cb(xhr);
+				callback(xhr);
 			}
 		};
 

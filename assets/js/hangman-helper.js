@@ -5,6 +5,7 @@ var hangmanHelper = (function HangmanHelper(){
 		 hasRemainingGuesses: hasRemainingGuesses,
 		 hasGuessedLetter: hasGuessedLetter,
 		 hasWon: hasWon,
+		 updateScrubbedWord: updateScrubbedWord,
 	 };
 
 	 function isAlphaKeyStroke(keyCode) {
@@ -22,4 +23,17 @@ var hangmanHelper = (function HangmanHelper(){
  	function hasWon(scrubbedWord) {
  		return !scrubbedWord.includes("_");
  	}
+
+	function updateScrubbedWord(wordModel) {
+		var scrubbedArr = wordModel.scrubbedWord.split(" ");
+		var wordArr = wordModel.word.split("");
+		for(var i = 0; i < wordModel.word.length; i++) {
+			if(wordModel.letters.includes(wordArr[i])) {
+				scrubbedArr[i] = wordArr[i];
+			}
+		}
+
+		wordModel.scrubbedWord = scrubbedArr.join(" ");
+	}
+
 }());
