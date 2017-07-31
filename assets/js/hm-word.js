@@ -1,7 +1,8 @@
+"use strict";
 var HangmanWord = (function HangmanWord() {
-	var word;
-	var scrubbedWord;
-	var lettersGuessed;
+	var word = "";
+	var scrubbedWord = "";
+	var lettersGuessed = [];
 
 	return {
 		word: word,
@@ -14,14 +15,34 @@ var HangmanWord = (function HangmanWord() {
 	};
 
 	function hasGuessedLetter(letter) {
-		return lettersGuessed.includes(letter);
+		const self = this;
+		return self.lettersGuessed.includes(letter);
 	}
 
 	function hasWon() {
-		return !scrubbedWord.includes("_");
+		var self = this;
+		return !self.scrubbedWord.includes("_");
 	}
 
-	function updateScrubbedWord() {}
+	function updateScrubbedWord() {
+		var self = this;
+		var scrubbedArr = self.scrubbedWord.split(" ");
+		var wordArr = self.word.split("");
+		for(var i = 0; i < self.word.length; i++) {
+			if(self.lettersGuessed.includes(wordArr[i])) {
+				scrubbedArr[i] = wordArr[i];
+			}
+		}
 
-	function initScrubbedWord() {}
+		self.scrubbedWord = scrubbedArr.join(" ");
+	}
+
+	function initScrubbedWord() {
+		var self = this;
+		var pattern = /[a-zA-Z]/g;
+
+		self.scrubbedWord = self.word.replace(pattern, "_")
+			.split("")
+			.join(" ");
+	}
 }());

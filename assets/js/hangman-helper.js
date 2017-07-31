@@ -8,7 +8,7 @@ var hangmanHelper = (function HangmanHelper(){
 		 updateScrubbedWord: updateScrubbedWord,
 	 };
 
-	 function isAlphaKeyStroke(keyCode) {
+	function isAlphaKeyStroke(keyCode) {
  		return (keyCode >= 65 && keyCode <= 90);
  	}
 

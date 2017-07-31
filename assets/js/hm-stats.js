@@ -1,6 +1,7 @@
+"use strict";
 var HangmanStats = (function HangmanStats() {
 	var wins = 0;
-	var remainingGuesses;
+	var remainingGuesses = 0;
 
 	return {
 		wins: wins,
@@ -10,14 +11,16 @@ var HangmanStats = (function HangmanStats() {
 	};
 
 	function hasRemainingGuesses() {
-		return (remainingGuesses != 0);
+		var self = this;
+		return (self.remainingGuesses != 0);
 	}
 
 	function setRemainingGuesses(wordLength) {
+		var self = this;
 		if(wordLength > 6) {
-			remainingGuesses = 12
+			self.remainingGuesses = 12;
 		} else {
-			remainingGuesses = wordLength * 2;
+			self.remainingGuesses = wordLength * 2;
 		}
 	}
 }());

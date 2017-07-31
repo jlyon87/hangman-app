@@ -1,5 +1,5 @@
 "use strict";
-var wordsApi = (function WordsApi() {
+var WordsApi = (function WordsApi() {
 	const config = {
 		uri: "https://wordsapiv1.p.mashape.com/words/?random=true",
 		key: "zpsiMlRUNLmshLpq8JMxpSt9BoUPp1tDj25jsnlKkH15pEsBnZ",

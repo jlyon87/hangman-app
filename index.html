@@ -21,10 +21,10 @@
 				<div >
 					<ul class="nav navbar-nav">
 						<li class="">
-							<a href="#" onclick="hangmanApp.start();">Start</a>
+							<a href="#" onclick="HangmanController.start();">Start</a>
 						</li>
 						<li class="">
-							<a href="#" onclick="hangmanApp.reset();">Reset</a>
+							<a href="#" onclick="HangmanController.reset();">Reset</a>
 						</li>
 					</ul>
 				</div>
@@ -88,11 +88,11 @@
 
 						<div class="row">
 							<div class="col-md-6">
-								<button class="btn btn-primary pull-right" type="button" name="Start" onclick="hangmanApp.start();">Start</button>
+								<button class="btn btn-primary pull-right" type="button" name="Start" onclick="HangmanController.start();">Start</button>
 							</div>
 
 							<div class="col-md-6">
-									<button class="btn btn-warning pull-left" type="button" name="Reset" onclick="hangmanApp.reset();">Reset</button>
+									<button class="btn btn-warning pull-left" type="button" name="Reset" onclick="HangmanController.reset();">Reset</button>
 							</div>
 						</div>
 
@@ -109,8 +109,11 @@
 		</nav>
 	</footer>
 
+	<script type="text/javascript" src="assets/js/hm-stats.js"></script>
+	<script type="text/javascript" src="assets/js/hm-word.js"></script>
 	<script type="text/javascript" src="assets/js/words-api.js"></script>
-	<script type="text/javascript" src="assets/js/hangman-helper.js"></script>
-	<script type="text/javascript" src="assets/js/hangman.js"></script>
+	<script type="text/javascript" src="assets/js/hangman-app.js"></script>
+	<script type="text/javascript" src="assets/js/hm-view.js"></script>
+	<script type="text/javascript" src="assets/js/hm-controller.js"></script>
 </body>
 </html>
