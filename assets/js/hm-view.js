@@ -1,13 +1,14 @@
 "use strict";
 var HangmanApp = (function HangmanView(App) {
 	var message = "";
-	var outputElements;
+	var elements = {};
 
 	init();
 
 	App.View = {
 		message: message,
 		refreshElements: refreshElements,
+		setMessage: setMessage,
 	};
 
 	return App;
@@ -18,14 +19,21 @@ var HangmanApp = (function HangmanView(App) {
 
 	function refreshElements() {
 		var self = this;
-		outputElements[0].textContent = App.Stats.wins;
-		outputElements[1].textContent = App.WordModel.scrubbedWord;
-		outputElements[2].textContent = App.Stats.remainingGuesses;
-		outputElements[3].textContent = App.WordModel.lettersGuessed.join(", ").toUpperCase();
+		elements.wins.textContent = App.Stats.wins;
+		elements.word.textContent = App.WordModel.scrubbedWord;
+		elements.remaining.textContent = App.Stats.remainingGuesses;
+		elements.letters.textContent = App.WordModel.lettersGuessed.join(", ").toUpperCase();
 	}
 
 	function initElements() {
-		outputElements = document.querySelectorAll(".output");
+		var nodeList = document.querySelectorAll(".output");
+		Array.prototype.forEach.call(nodeList, function(ele) {
+			elements[ele.id] = ele;
+		});
+	}
+
+	function setMessage(text) {
+		elements.message.textContent = text;
 	}
 
 }(HangmanApp || {}));

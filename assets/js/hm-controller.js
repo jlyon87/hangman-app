@@ -19,6 +19,7 @@ var HangmanApp = (function HangmanController(App) {
 	}
 
 	function reset() {
+		App.View.setMessage("");
 		App.Hangman.newWord();
 	}
 

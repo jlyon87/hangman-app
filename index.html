@@ -7,6 +7,8 @@
 	<title>Hangman | JLyon</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css" >
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/master.css">
 </head>
@@ -44,23 +46,23 @@
 								<section class="text-center">
 
 									<div >
-										<label for="win-out">Wins: </label>
-										<span class="output" id="win-out"></span>
+										<label for="wins">Wins: </label>
+										<span class="output" id="wins"></span>
 									</div>
 
 									<div >
-										<label for="word-out">Word: </label>
-										<span class="output" id="word-out">Loading...</span>
+										<label for="word">Word: </label>
+										<span class="output" id="word">Loading...</span>
 									</div>
 
 									<div >
-										<label for="remaining-out">Remaining Guesses: </label>
-										<span class="output" id="remaining-out"></span>
+										<label for="remaining">Remaining Guesses: </label>
+										<span class="output" id="remaining"></span>
 									</div>
 
 									<div >
-										<label for="letters-out">Letters Guessed: </label>
-										<span class="output" id="letters-out"></span>
+										<label for="letters">Letters Guessed: </label>
+										<span class="output" id="letters"></span>
 									</div>
 
 								</section>
@@ -80,19 +82,19 @@
 					<div class="panel-body">
 
 						<div class="row">
-							<div class="col-md-12">
-
-									<img class="img-responsive img-circle" src="assets/images/noose.jpg" alt="noose">
-							</div>
-						</div>
-
-						<div class="row">
 							<div class="col-md-6">
 								<button class="btn btn-primary pull-right" type="button" name="Start" onclick="HangmanApp.Controller.start();">Start</button>
 							</div>
 
 							<div class="col-md-6">
 									<button class="btn btn-warning pull-left" type="button" name="Reset" onclick="HangmanApp.Controller.reset();">Reset</button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+
+									<span id="message" class="output message">Click Start to begin!</span>
 							</div>
 						</div>
 

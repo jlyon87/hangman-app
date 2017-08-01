@@ -3,7 +3,6 @@ body {
 	padding-bottom: 70px;
 }
 
-.col-centered {
-	display: block;
-	margin: 0 auto;
+.message {
+	margin: 1rem;
 }

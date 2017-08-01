@@ -17,13 +17,13 @@ var HangmanApp = (function HangmanApp(App) {
 		if(!App.WordModel.hasGuessedLetter(letter)) {
 			App.WordModel.lettersGuessed.push(letter);
 			App.WordModel.updateScrubbedWord();
+			self.checkGameStatus();
 		}
 
 		if(!App.WordModel.hasLetter(letter)) {
 			App.Stats.remainingGuesses--;
+			self.checkGameStatus();
 		}
-
-		self.checkGameStatus();
 	}
 
 	function newWord(callback) {
@@ -31,6 +31,10 @@ var HangmanApp = (function HangmanApp(App) {
 			.then(function(fulfilled) {
 				var res = JSON.parse(fulfilled);
 				console.log("CHEATER!", res);
+
+				if(res.results && res.results[0].definition) {
+					App.View.setMessage("HINT: " + res.results[0].definition);
+				}
 
 				App.WordModel.word = res.word;
 				App.WordModel.initScrubbedWord();
@@ -53,11 +57,12 @@ var HangmanApp = (function HangmanApp(App) {
 	}
 
 	function win() {
-		alert("you win");
+		App.View.setMessage("You Win!");
+		App.Stats.wins++;
 	}
 
 	function lost() {
-		alert("you lose");
+		App.View.setMessage("You Lose!");
 	}
 
 }(HangmanApp || {}));
