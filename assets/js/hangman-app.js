@@ -1,16 +1,12 @@
 "use strict";
 var HangmanApp = (function HangmanApp(App) {
 
-	init();
-
 	App.Hangman = {
 		enterGuess: enterGuess,
 		newWord: newWord,
 		checkGameStatus: checkGameStatus,
 	};
 	return App;
-
-	function init() {}
 
 	function enterGuess(letter) {
 		var self = this;

@@ -1,8 +1,12 @@
 "use strict";
 var HangmanApp = (function HangmanWord(App) {
-	var word = "";
-	var scrubbedWord = "";
-	var lettersGuessed = [];
+	var word;
+	var scrubbedWord;
+	var lettersGuessed;
+
+	var alphaPattern = /[a-zA-Z]/g;
+
+	init();
 
 	App.WordModel = {
 		word: word,
@@ -16,6 +20,12 @@ var HangmanApp = (function HangmanWord(App) {
 	};
 
 	return App;
+
+	function init() {
+		word = "";
+		scrubbedWord = "";
+		lettersGuessed = [];
+	}
 
 	function hasLetter(letter) {
 		var self = this;
@@ -34,12 +44,29 @@ var HangmanApp = (function HangmanWord(App) {
 
 	function updateScrubbedWord() {
 		var self = this;
-		var scrubbedArr = self.scrubbedWord.split(" ");
+		self.scrubbedWord = "";
+
+		var scrubbedArr = [];
 		var wordArr = self.word.split("");
+		console.log(wordArr);
 		for(var i = 0; i < self.word.length; i++) {
-			if(self.lettersGuessed.includes(wordArr[i])) {
-				scrubbedArr[i] = wordArr[i];
+			var letter = wordArr[i];
+			// if(self.hasGuessedLetter(letter)) {
+			// 	scrubbedArr[i] = letter;
+			// } else if(!(alphaPattern.test(letter))) {
+			// 	scrubbedArr[i] = letter;
+			// }
+			// console.log(self.lettersGuessed.includes(wordArr[i]));
+			// console.log(!alphaPattern.test(wordArr[i]));
+
+			if(self.hasGuessedLetter(wordArr[i])) {
+				scrubbedArr[i] = (wordArr[i]);
+			} else if(!alphaPattern.test(wordArr[i])) {
+				scrubbedArr[i] = (wordArr[i]);
+			} else {
+				scrubbedArr[i] = ("_");
 			}
+			console.log(scrubbedArr);
 		}
 
 		self.scrubbedWord = scrubbedArr.join(" ");
@@ -47,9 +74,8 @@ var HangmanApp = (function HangmanWord(App) {
 
 	function initScrubbedWord() {
 		var self = this;
-		var pattern = /[a-zA-Z]/g;
 
-		self.scrubbedWord = self.word.replace(pattern, "_")
+		self.scrubbedWord = self.word.replace(alphaPattern, "_")
 			.split("")
 			.join(" ");
 	}

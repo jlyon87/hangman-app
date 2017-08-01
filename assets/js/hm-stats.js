@@ -1,7 +1,9 @@
 "use strict";
 var HangmanApp = (function HangmanStats(App) {
-	var wins = 0;
-	var remainingGuesses = 0;
+	var wins;
+	var remainingGuesses;
+
+	init();
 
 	App.Stats = {
 		wins: wins,
@@ -11,6 +13,11 @@ var HangmanApp = (function HangmanStats(App) {
 	};
 
 	return App;
+
+	function init() {
+		wins = 0;
+		remainingGuesses = 0;
+	}
 
 	function hasRemainingGuesses() {
 		var self = this;
