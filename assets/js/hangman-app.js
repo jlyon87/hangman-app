@@ -13,11 +13,17 @@ var HangmanApp = (function HangmanApp(App) {
 	function init() {}
 
 	function enterGuess(letter) {
-		App.WordModel.lettersGuessed.push(letter);
-		App.Stats.remainingGuesses--;
+		var self = this;
+		if(!App.WordModel.hasGuessedLetter(letter)) {
+			App.WordModel.lettersGuessed.push(letter);
+			App.WordModel.updateScrubbedWord();
+		}
 
-		App.WordModel.updateScrubbedWord();
-		checkGameStatus();
+		if(!App.WordModel.hasLetter(letter)) {
+			App.Stats.remainingGuesses--;
+		}
+
+		self.checkGameStatus();
 	}
 
 	function newWord(callback) {
@@ -29,7 +35,7 @@ var HangmanApp = (function HangmanApp(App) {
 				App.WordModel.word = res.word;
 				App.WordModel.initScrubbedWord();
 				App.WordModel.lettersGuessed = [];
-				App.Stats.setRemainingGuesses(App.WordModel.word.length);
+				App.Stats.setRemainingGuesses();
 				App.View.refreshElements();
 			})
 			.catch(function(error) {

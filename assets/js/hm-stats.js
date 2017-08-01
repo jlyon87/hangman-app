@@ -17,8 +17,9 @@ var HangmanApp = (function HangmanStats(App) {
 		return (self.remainingGuesses != 0);
 	}
 
-	function setRemainingGuesses(wordLength) {
+	function setRemainingGuesses() {
 		var self = this;
+		var wordLength = App.WordModel.word.length;
 		if(wordLength > 6) {
 			self.remainingGuesses = 12;
 		} else {

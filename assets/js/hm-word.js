@@ -8,6 +8,7 @@ var HangmanApp = (function HangmanWord(App) {
 		word: word,
 		scrubbedWord: scrubbedWord,
 		lettersGuessed: lettersGuessed,
+		hasLetter: hasLetter,
 		hasGuessedLetter: hasGuessedLetter,
 		hasWon: hasWon,
 		updateScrubbedWord: updateScrubbedWord,
@@ -16,8 +17,13 @@ var HangmanApp = (function HangmanWord(App) {
 
 	return App;
 
+	function hasLetter(letter) {
+		var self = this;
+		return self.word.includes(letter);
+	}
+
 	function hasGuessedLetter(letter) {
-		const self = this;
+		var self = this;
 		return self.lettersGuessed.includes(letter);
 	}
 

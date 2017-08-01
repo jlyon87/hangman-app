@@ -6,6 +6,7 @@ var HangmanApp = (function HangmanView(App) {
 	init();
 
 	App.View = {
+		message: message,
 		refreshElements: refreshElements,
 	};
 
