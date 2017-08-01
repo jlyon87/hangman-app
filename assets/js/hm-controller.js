@@ -1,15 +1,17 @@
 "use strict";
-var HangmanController = (function HangmanController(App, View) {
+var HangmanApp = (function HangmanController(App) {
 
 	init();
 
-	return {
+	App.Controller = {
 		start: start,
 		reset: reset,
-	};
+	}
+
+	return App;
 
 	function init() {
-		App.newWord(View.refreshElements);
+		App.Hangman.newWord();
 	}
 
 	function start() {
@@ -17,7 +19,7 @@ var HangmanController = (function HangmanController(App, View) {
 	}
 
 	function reset() {
-		App.newWord(View.refreshElements);
+		App.Hangman.newWord();
 	}
 
 	function onKeyupListener() {
@@ -25,8 +27,8 @@ var HangmanController = (function HangmanController(App, View) {
 
 			if(isAlphaKeyStroke(evt.keyCode)) {
 
-				App.enterGuess(evt.key);
-				View.refreshElements();
+				App.Hangman.enterGuess(evt.key);
+				App.View.refreshElements();
 			}
 		};
 	}
@@ -34,4 +36,4 @@ var HangmanController = (function HangmanController(App, View) {
 	function isAlphaKeyStroke(keyCode) {
  		return (keyCode >= 65 && keyCode <= 90);
  	}
-}(HangmanApp, HangmanView));
+}(HangmanApp || {}));

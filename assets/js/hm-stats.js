@@ -1,14 +1,16 @@
 "use strict";
-var HangmanStats = (function HangmanStats() {
+var HangmanApp = (function HangmanStats(App) {
 	var wins = 0;
 	var remainingGuesses = 0;
 
-	return {
+	App.Stats = {
 		wins: wins,
 		remainingGuesses: remainingGuesses,
 		hasRemainingGuesses: hasRemainingGuesses,
 		setRemainingGuesses: setRemainingGuesses,
 	};
+
+	return App;
 
 	function hasRemainingGuesses() {
 		var self = this;
@@ -23,4 +25,4 @@ var HangmanStats = (function HangmanStats() {
 			self.remainingGuesses = wordLength * 2;
 		}
 	}
-}());
+}(HangmanApp || {}));

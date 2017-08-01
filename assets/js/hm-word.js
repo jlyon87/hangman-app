@@ -1,10 +1,10 @@
 "use strict";
-var HangmanWord = (function HangmanWord() {
+var HangmanApp = (function HangmanWord(App) {
 	var word = "";
 	var scrubbedWord = "";
 	var lettersGuessed = [];
 
-	return {
+	App.WordModel = {
 		word: word,
 		scrubbedWord: scrubbedWord,
 		lettersGuessed: lettersGuessed,
@@ -13,6 +13,8 @@ var HangmanWord = (function HangmanWord() {
 		updateScrubbedWord: updateScrubbedWord,
 		initScrubbedWord: initScrubbedWord,
 	};
+
+	return App;
 
 	function hasGuessedLetter(letter) {
 		const self = this;
@@ -45,4 +47,4 @@ var HangmanWord = (function HangmanWord() {
 			.split("")
 			.join(" ");
 	}
-}());
+}(HangmanApp || {}));

@@ -1,39 +1,36 @@
 "use strict";
-var HangmanApp = (function HangmanApp(Stats, Word, WordService) {
+var HangmanApp = (function HangmanApp(App) {
 
 	init();
 
-	return {
-		Stats: Stats,
-		Word: Word,
+	App.Hangman = {
 		enterGuess: enterGuess,
 		newWord: newWord,
 		checkGameStatus: checkGameStatus,
 	};
+	return App;
 
 	function init() {}
 
 	function enterGuess(letter) {
-		Word.lettersGuessed.push(letter);
-		Stats.remainingGuesses--;
+		App.WordModel.lettersGuessed.push(letter);
+		App.Stats.remainingGuesses--;
 
-		Word.updateScrubbedWord();
+		App.WordModel.updateScrubbedWord();
 		checkGameStatus();
 	}
 
 	function newWord(callback) {
-		WordService.getWord()
+		App.WordService.getWord()
 			.then(function(fulfilled) {
 				var res = JSON.parse(fulfilled);
 				console.log("CHEATER!", res);
 
-				Word.word = res.word;
-				Word.initScrubbedWord();
-				Word.lettersGuessed = [];
-				Stats.setRemainingGuesses(Word.word.length);
-				console.log(Word);
-				callback();
-				return res.status;
+				App.WordModel.word = res.word;
+				App.WordModel.initScrubbedWord();
+				App.WordModel.lettersGuessed = [];
+				App.Stats.setRemainingGuesses(App.WordModel.word.length);
+				App.View.refreshElements();
 			})
 			.catch(function(error) {
 				console.log(error);
@@ -42,9 +39,9 @@ var HangmanApp = (function HangmanApp(Stats, Word, WordService) {
 	}
 
 	function checkGameStatus() {
-		if(Word.hasWon()) {
+		if(App.WordModel.hasWon()) {
 			win();
-		} else if(!Stats.hasRemainingGuesses()) {
+		} else if(!App.Stats.hasRemainingGuesses()) {
 			lose();
 		}
 	}
@@ -57,4 +54,4 @@ var HangmanApp = (function HangmanApp(Stats, Word, WordService) {
 		alert("you lose");
 	}
 
-}(HangmanStats, HangmanWord, WordsApi));
+}(HangmanApp || {}));

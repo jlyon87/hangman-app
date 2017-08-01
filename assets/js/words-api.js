@@ -1,13 +1,15 @@
 "use strict";
-var WordsApi = (function WordsApi() {
+var HangmanApp = (function WordsApi(App) {
 	const config = {
 		uri: "https://wordsapiv1.p.mashape.com/words/?random=true",
 		key: "zpsiMlRUNLmshLpq8JMxpSt9BoUPp1tDj25jsnlKkH15pEsBnZ",
 	};
 
-	return {
+	App.WordService = {
 		getWord: getWord,
 	};
+
+	return App;
 
 	function getWord() {
 		return new Promise(function(resolve, reject) {
@@ -36,4 +38,4 @@ var WordsApi = (function WordsApi() {
 		return xhr.send();
 	}
 
-}());
+}(HangmanApp || {}));
