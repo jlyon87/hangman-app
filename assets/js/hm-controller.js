@@ -11,16 +11,19 @@ var HangmanApp = (function HangmanController(App) {
 	return App;
 
 	function init() {
-		App.Hangman.newWord();
+
 	}
 
 	function start() {
+		App.View.setMessage("Loading...");
+		App.Hangman.newWord();
 		onKeyupListener();
 	}
 
 	function reset() {
 		App.View.setMessage("");
 		App.Hangman.newWord();
+		onKeyupListener();
 	}
 
 	function onKeyupListener() {
