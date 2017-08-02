@@ -19,7 +19,7 @@ var HangmanApp = (function HangmanApp(App) {
 			App.WordModel.updateScrubbedWord();
 		}
 
-		self.checkGameStatus();
+		return self.checkGameStatus();
 	}
 
 	function newWord(callback) {
@@ -50,9 +50,12 @@ var HangmanApp = (function HangmanApp(App) {
 	function checkGameStatus() {
 		if(App.WordModel.hasWon()) {
 			win();
+			return 1;
 		} else if(!App.Stats.hasRemainingGuesses()) {
 			lose();
+			return 0;
 		}
+		return;
 	}
 
 	function win() {

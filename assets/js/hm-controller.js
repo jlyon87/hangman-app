@@ -31,15 +31,11 @@ var HangmanApp = (function HangmanController(App) {
 	function onKeyupListener() {
 		document.onkeyup = function(evt) {
 
-			console.log(evt.key);
-			console.log(evt.keyCode);
-
 			if(isAlphaKeyStroke(evt.keyCode)) {
 
-				App.Hangman.enterGuess(evt.key);
+				var status = App.Hangman.enterGuess(evt.key);
 				App.View.refreshElements();
-			} else if(isEnterKeyStroke(evt.keyCode)) {
-				reset();
+				checkStatus(status);
 			}
 		};
 	}
@@ -50,5 +46,15 @@ var HangmanApp = (function HangmanController(App) {
 
 	function isEnterKeyStroke(keyCode) {
 		return (keyCode === 13);
+	}
+
+	function checkStatus(status) {
+		if(status === 1 || status === 2) {
+			document.onkeyup = function(evt) {
+				if(isEnterKeyStroke(evt.keyCode)) {
+					reset();
+				}
+			}
+		}
 	}
 }(HangmanApp || {}));
