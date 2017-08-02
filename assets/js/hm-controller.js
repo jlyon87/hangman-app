@@ -16,14 +16,14 @@ var HangmanApp = (function HangmanController(App) {
 
 	function start() {
 		App.View.setMessage("Loading...");
-		App.View.updateStatusIcon("fa fa-spinner text-info");
+		App.View.updateStatusIcon("fa fa-gear fa-spin text-info");
 		App.Hangman.newWord();
 		onKeyupListener();
 	}
 
 	function reset() {
 		App.View.setMessage("Loading...");
-		App.View.updateStatusIcon("fa fa-spinner text-info");
+		App.View.updateStatusIcon("fa fa-gear fa-spin text-info");
 		App.Hangman.newWord();
 		onKeyupListener();
 	}
