@@ -4,8 +4,6 @@ var HangmanApp = (function HangmanWord(App) {
 	var scrubbedWord;
 	var lettersGuessed;
 
-	var alphaPattern = /[a-zA-Z]/g;
-
 	init();
 
 	App.WordModel = {
@@ -17,6 +15,7 @@ var HangmanApp = (function HangmanWord(App) {
 		hasWon: hasWon,
 		updateScrubbedWord: updateScrubbedWord,
 		initScrubbedWord: initScrubbedWord,
+		isAlphaCharacter: isAlphaCharacter,
 	};
 
 	return App;
@@ -46,37 +45,36 @@ var HangmanApp = (function HangmanWord(App) {
 		var self = this;
 		self.scrubbedWord = "";
 
-		var scrubbedArr = [];
-		var wordArr = self.word.split("");
-		console.log(wordArr);
-		for(var i = 0; i < self.word.length; i++) {
-			var letter = wordArr[i];
-			// if(self.hasGuessedLetter(letter)) {
-			// 	scrubbedArr[i] = letter;
-			// } else if(!(alphaPattern.test(letter))) {
-			// 	scrubbedArr[i] = letter;
-			// }
-			// console.log(self.lettersGuessed.includes(wordArr[i]));
-			// console.log(!alphaPattern.test(wordArr[i]));
+		var wordArray = self.word.split("");
+		var scrubbed = [];
 
-			if(self.hasGuessedLetter(wordArr[i])) {
-				scrubbedArr[i] = (wordArr[i]);
-			} else if(!alphaPattern.test(wordArr[i])) {
-				scrubbedArr[i] = (wordArr[i]);
+		wordArray.forEach(function(character) {
+
+			if(self.hasGuessedLetter(character)) {
+				scrubbed.push(character);
+			} else if(self.isAlphaCharacter(character)) {
+				scrubbed.push("_");
 			} else {
-				scrubbedArr[i] = ("_");
+				scrubbed.push(character);
 			}
-			console.log(scrubbedArr);
-		}
 
-		self.scrubbedWord = scrubbedArr.join(" ");
+			self.scrubbedWord = scrubbed.join("");
+		});
 	}
 
 	function initScrubbedWord() {
 		var self = this;
+		var alphaPattern = /[a-zA-Z]/g;
 
-		self.scrubbedWord = self.word.replace(alphaPattern, "_")
-			.split("")
-			.join(" ");
+		self.scrubbedWord = self.word.replace(alphaPattern, "_");
+		// console.log(self.scrubbedWord);
+		// console.log(self.scrubbedWord.length);
+		// console.log(self.scrubbedWord.split(/\s/g));
+	}
+
+	function isAlphaCharacter(c) {
+		// var alphaPattern = /^[a-zA-Z]+$/g;
+		var alphaPattern = /[a-zA-Z]/g;
+		return alphaPattern.test(c);
 	}
 }(HangmanApp || {}));

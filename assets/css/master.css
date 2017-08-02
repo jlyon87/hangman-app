@@ -2,3 +2,12 @@ body {
 	padding-top: 70px;
 	padding-bottom: 70px;
 }
+
+.word-display {
+	margin: 0 .2em 0 .2em;
+	width: 1em;
+}
+
+.underline {
+	text-decoration: underline;
+}
