@@ -31,10 +31,15 @@ var HangmanApp = (function HangmanController(App) {
 	function onKeyupListener() {
 		document.onkeyup = function(evt) {
 
+			console.log(evt.key);
+			console.log(evt.keyCode);
+
 			if(isAlphaKeyStroke(evt.keyCode)) {
 
 				App.Hangman.enterGuess(evt.key);
 				App.View.refreshElements();
+			} else if(isEnterKeyStroke(evt.keyCode)) {
+				reset();
 			}
 		};
 	}
@@ -42,4 +47,8 @@ var HangmanApp = (function HangmanController(App) {
 	function isAlphaKeyStroke(keyCode) {
  		return (keyCode >= 65 && keyCode <= 90);
  	}
+
+	function isEnterKeyStroke(keyCode) {
+		return (keyCode === 13);
+	}
 }(HangmanApp || {}));
