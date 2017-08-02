@@ -9,6 +9,7 @@ var HangmanApp = (function HangmanView(App) {
 		message: message,
 		refreshElements: refreshElements,
 		setMessage: setMessage,
+		updateStatusIcon: updateStatusIcon,
 	};
 
 	return App;
@@ -17,9 +18,18 @@ var HangmanApp = (function HangmanView(App) {
 		initElements();
 	}
 
+	function win(styles) {
+		elements.statusIcon.className = styles;
+	}
+
+	function updateStatusIcon(styles) {
+		elements.statusIcon.className = styles;
+	}
+
 	function refreshElements() {
 		var self = this;
 		elements.wins.textContent = App.Stats.wins;
+		elements.losses.textContent = App.Stats.losses;
 		elements.remaining.textContent = App.Stats.remainingGuesses;
 		elements.letters.textContent = App.WordModel.lettersGuessed.join(", ").toUpperCase();
 		setWord();
@@ -73,7 +83,7 @@ var HangmanApp = (function HangmanView(App) {
 
 	function createCharacterSpan(character, className) {
 		var newSpan = document.createElement("span");
-		newSpan.textContent = character;
+		newSpan.textContent = character.toUpperCase();
 		newSpan.className = "word-display underline";
 		return newSpan;
 	}

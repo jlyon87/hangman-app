@@ -29,6 +29,7 @@ var HangmanApp = (function HangmanApp(App) {
 				console.log("CHEATER!", res);
 
 				App.View.setMessage("");
+				App.View.updateStatusIcon("");
 
 				if(res.results && res.results[0].definition) {
 					App.View.setMessage("HINT: " + res.results[0].definition);
@@ -56,12 +57,15 @@ var HangmanApp = (function HangmanApp(App) {
 
 	function win() {
 		App.View.setMessage("You Win! Press Reset to play again!");
+		App.View.updateStatusIcon("fa fa-check-circle text-success");
 		App.Stats.wins++;
 		document.onkeyup = function() {};
 	}
 
 	function lose() {
-		App.View.setMessage("You Lose! Press Reset to play again!");
+		App.View.setMessage("You Lose! The word was " + App.WordModel.word.toUpperCase() + ". Press Reset to play again!");
+		App.View.updateStatusIcon("fa fa-times-circle text-danger");
+		App.Stats.losses++;
 		document.onkeyup = function() {};
 	}
 

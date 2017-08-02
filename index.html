@@ -8,8 +8,10 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/master.css">
+
+	<!-- <script src="https://use.fontawesome.com/157551023b.js"></script> -->
 </head>
 
 <body>
@@ -31,7 +33,6 @@
 
 	<div class="container">
 		<div class="row">
-
 			<div class=" col-md-8">
 				<section class="card">
 					<div class="card-block">
@@ -40,7 +41,6 @@
 						<div class="row">
 							<div class="col-md-12">
 								<section class="text-center">
-
 									<div >
 										<label for="word"></label>
 										<span class="output" id="word">Click Start to Begin!</span>
@@ -73,6 +73,11 @@
 								</div>
 
 								<div class="col-md-12">
+									<label for="losses">Losses: </label>
+									<span class="output" id="losses"></span>
+								</div>
+
+								<div class="col-md-12">
 									<label for="remaining">Remaining Guesses: </label>
 									<span class="output" id="remaining"></span>
 								</div>
@@ -87,8 +92,10 @@
 							</div>
 							<div class="row text-center">
 								<div class="col-md-12 mt-4">
-
-										<div id="message" class="output"></div>
+									<div >
+										<i id="statusIcon" class="output"></i>
+										<span id="message" class="output"></span>
+									</div>
 								</div>
 							</div>
 						</p>
